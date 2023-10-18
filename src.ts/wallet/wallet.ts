@@ -65,6 +65,10 @@ export class Wallet extends BaseWallet {
     } */
 
     async encrypt(password: Uint8Array | string, progressCallback?: ProgressCallback, options?: {}): Promise<string> {
+
+        console.log('encrypt');
+        console.log({ progressCallback, ...options });
+        
         const account = { address: this.address, privateKey: this.privateKey };
         return await encryptKeystoreJson(account, password, { progressCallback, ...options });
     }
