@@ -58,9 +58,15 @@ export class Wallet extends BaseWallet {
      *  If %%progressCallback%% is specified, it will receive periodic
      *  updates as the encryption process progreses.
      */
-    async encrypt(password: Uint8Array | string, progressCallback?: ProgressCallback): Promise<string> {
+
+    /* async encrypt(password: Uint8Array | string, progressCallback?: ProgressCallback): Promise<string> {
         const account = { address: this.address, privateKey: this.privateKey };
         return await encryptKeystoreJson(account, password, { progressCallback });
+    } */
+
+    async encrypt(password: Uint8Array | string, progressCallback?: ProgressCallback, options?: {}): Promise<string> {
+        const account = { address: this.address, privateKey: this.privateKey };
+        return await encryptKeystoreJson(account, password, { progressCallback, ...options });
     }
 
     /**
